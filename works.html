@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTS | (주)단비건설 & CAM 건축사사무소</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 필터링을 위한 필수 스타일: CSS 파일에 없다면 여기에 추가하세요 */
+        .grid-item.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-group">
+                <span class="logo-text">(주)단비건설</span>
+                <span class="logo-divider">/</span>
+                <span class="logo-text">CAM 건축사사무소</span>
+            </a>
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="about.html">회사소개</a>
+                <a href="services.html">사업분야</a>
+                <a href="works.html" class="active">시공실적</a>
+                <a href="contact.html">문의하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="works-grid-container">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="commercial">근린생활시설 외</button>
+                <button class="filter-btn" data-filter="factory">공장, 창고</button>
+                <button class="filter-btn" data-filter="house">주택</button>
+                <button class="filter-btn" data-filter="remodeling">리모델링, 보수</button>
+            </div>
+
+            <div class="grid works-page-grid" id="works-grid">
+                
+                <div class="grid-item" data-category="commercial">
+                    <a href="ph001.html">
+                        <div class="img-box">
+                            <img src="work/1/1.webp" alt="전주 근생">
+                        </div>
+                        <div class="text-box">
+                            <span class="category">근린생활시설</span>
+                            <h3>전주 만성동 근생 신축</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item" data-category="remodeling">
+                    <a href="pr001.html">
+                        <div class="img-box">
+                            <img src="work/remodeling/1.webp" alt="국립식량과학원 메인로비">
+                        </div>
+                        <div class="text-box">
+                            <span class="category">리모델링</span>
+                            <h3>국립식량과학원 메인로비</h3>
+                        </div>
+                    </a>
+                </div>
+
+            </div> </section>
+    </main>
+
+    <script>
+        // 1. 이미지 보호 기능 (우클릭 및 드래그 방지)
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        }, false);
+
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        }, false);
+
+        // 2. 필터링 기능
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const gridItems = document.querySelectorAll('.grid-item');
+
+        filterBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                // 버튼 활성화 상태 변경
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // 아이템 필터링 실행
+                gridItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hide');
+                    } else {
+                        item.classList.add('hide');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

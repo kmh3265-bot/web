@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADC | (주)단비건설 & CAM 건축사사무소</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-group">
+                <span class="logo-text">(주)단비건설</span>
+                <span class="logo-divider">/</span>
+                <span class="logo-text">CAM 건축사사무소</span>
+            </a>
+            <nav>
+                <a href="index.html" class="active">HOME</a>
+                <a href="about.html">회사소개</a>
+                <a href="services.html">사업분야</a>
+                <a href="works.html">시공실적</a>
+                <a href="contact.html">문의하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-tag">Architecture & Construction Management</div>
+            <h1 class="hero-title">
+                건축의 시작부터 준공까지, <br>
+                <span class="highlight">단 하나의 시스템</span>으로 완성합니다.
+            </h1>
+            <p class="hero-description">
+                <strong class="brand-bold">(주)단비건설</strong>과 
+                <strong class="brand-bold">CAM 건축사사무소</strong>가 함께합니다.
+            </p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn btn-primary">통합 건축 상담</a>
+                <a href="works.html" class="btn btn-secondary">포트폴리오 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const maxImages = 10; 
+        let currentIndex = 1;
+        const heroSection = document.querySelector('.hero');
+
+        function preloadNextImage(index) {
+            const img = new Image();
+            img.src = `${index}.webp`;
+        }
+
+        function changeBackground() {
+            currentIndex = (currentIndex % maxImages) + 1;
+            heroSection.style.backgroundImage = `url('${currentIndex}.webp')`;
+            const nextIndex = (currentIndex % maxImages) + 1;
+            preloadNextImage(nextIndex);
+        }
+
+        setInterval(changeBackground, 4000); 
+
+        heroSection.style.backgroundImage = `url('1.webp')`;
+        preloadNextImage(2);
+    </script>
+
+    <script>
+      (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+      ChannelIO('boot', {
+        "pluginKey": "7e48d641-9ed5-4ac4-980e-d0b0b389ba37"
+      });
+    </script>
+
+<script>
+    // 이미지에서 우클릭 방지
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    }, false);
+
+    // 이미지 드래그 방지
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    }, false);
+</script>
+
+
+</body>
+</html>
+

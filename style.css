@@ -1,0 +1,565 @@
+/* 1. 기본 설정 및 초기화 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #ffffff; 
+    color: #ffffff;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* 2. 상단 헤더 (Header) */
+/* 상단 헤더 공통 고정 스타일 */
+header {
+    position: fixed; /* 모든 페이지에서 상단에 고정 */
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    /* 배경색은 페이지 특성에 따라 HTML body 클래스로 조절하거나 아래처럼 투명도 조절 */
+    background-color: rgba(15, 23, 42, 0.98); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+/* 흰색 배경 페이지(ABOUT, SERVICES 등)를 위한 헤더 대응 */
+/* body 태그에 클래스가 없는 서브 페이지들용 */
+body:not(.main-page) header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body:not(.main-page) .logo-text,
+body:not(.main-page) nav a {
+    color: #1e293b !important; /* 글자색을 어둡게 하여 흰색 배경에서 보이게 함 */
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* 로고 그룹: 크기 20% 확대 및 링크 스타일 적용 */
+.logo-group { 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; /* 링크 밑줄 제거 */
+    transition: opacity 0.3s ease;
+}
+
+.logo-group:hover {
+    opacity: 0.8; /* 클릭 가능한 요소임을 암시 */
+}
+
+.logo-text { 
+    font-size: 20px; /* 기존 16px에서 20% 확대 적용 */
+    font-weight: 700; 
+    color: #ffffff; 
+    letter-spacing: 0.5px; 
+}
+
+.logo-divider { 
+    margin: 0 12px; 
+    color: #3b82f6; 
+    font-size: 18px; 
+}
+
+/* 메뉴 스타일 */
+nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+nav a:hover, nav a.active { 
+    color: #3b82f6; 
+}
+
+/* 3. 메인 히어로 섹션 (Hero) */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1.2s ease-in-out;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.hero-tag { font-size: 13px; color: #3b82f6; font-weight: 600; margin-bottom: 25px; letter-spacing: 4px; text-transform: uppercase; }
+.hero-title { font-size: 48px; line-height: 1.25; font-weight: 800; margin-bottom: 30px; letter-spacing: -1.5px; }
+.highlight { color: #3b82f6; }
+
+/* 4. 설명글 및 브랜드 강조 수정 */
+.hero-description { 
+    font-size: 18px; 
+    color: #94a3b8; 
+    margin-bottom: 50px; 
+    font-weight: 300; 
+}
+
+.brand-bold { 
+    font-weight: 900 !important; /* 가장 두껍게 강조 */
+    color: #ffffff !important; 
+    border-bottom: none !important; /* 밑줄 삭제 강제 적용 */
+    text-decoration: none !important; /* 혹시 모를 텍스트 데코레이션 삭제 */
+    display: inline-block; /* 간격 간섭 방지 */
+}
+/* 버튼 스타일 */
+.hero-buttons { display: flex; gap: 15px; justify-content: center; }
+.btn { padding: 16px 40px; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+.btn-primary { background-color: #3b82f6; color: #fff; border: 1px solid #3b82f6; }
+.btn-primary:hover { background-color: #2563eb; transform: translateY(-2px); }
+.btn-secondary { background-color: transparent; color: #cbd5e1; border: 1px solid #334155; }
+.btn-secondary:hover { border-color: #3b82f6; color: #fff; }
+
+/* 서브 페이지 공통 배경 설정 (흰색 테마) */
+.sub-page-header, 
+.page-container,
+.works-grid-container,
+.project-detail-container { 
+    background-color: #ffffff !important; /* 배경을 흰색으로 강제 지정 */
+    color: #1e293b !important; /* 글자색은 어두운 남색으로 변경하여 가독성 확보 */
+}
+
+/* 서브 페이지 타이틀 영역 */
+.sub-page-header {
+    padding: 180px 0 60px;
+    border-bottom: 1px solid #e2e8f0; /* 하단에 얇은 구분선 추가 */
+}
+
+.sub-page-header h2 { color: #3b82f6; } /* 타이틀 포인트 블루 유지 */
+.sub-page-header p { color: #64748b; } /* 부제목은 진한 회색으로 */
+
+/* 서비스 카드 및 프로필 박스 조정 */
+.service-card, .detail-text, .detail-info-box {
+    background: #f8fafc !important; /* 흰색 배경과 대비되는 아주 연한 회색 */
+    border: 1px solid #e2e8f0;
+}
+
+.service-card h4, .career-list li, .detail-text li {
+    color: #1e293b !important; /* 내부 글자색도 어둡게 변경 */
+}
+
+/* 서브 페이지 헤더(메뉴바) 색상 대응 */
+/* 메인 외 페이지에서는 헤더가 가독성을 위해 배경을 가질 수 있도록 설정 */
+body:not(.main-page) header {
+    background-color: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+body:not(.main-page) .logo-text,
+body:not(.main-page) nav a {
+    color: #1e293b !important;
+}
+
+/* 포트폴리오 그리드 레이아웃 */
+.works-grid-container { padding: 80px 40px; background-color: #0f172a; }
+.grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.grid-item { background: #ffffff; border-radius: 12px; overflow: hidden; transition: 0.3s; }
+.grid-item:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+.img-box { height: 300px; overflow: hidden; }
+.img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.grid-item:hover .img-box img { transform: scale(1.1); }
+
+.text-box { padding: 25px; }
+.category { color: #3b82f6; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+.text-box h3 { font-size: 20px; margin: 10px 0; color: #f1f5f9; }
+.text-box p { color: #94a3b8; font-size: 14px; }
+
+/* 서브 페이지 공통 레이아웃 */
+.page-container { padding: 180px 40px 100px; max-width: 1200px; margin: 0 auto; }
+.sub-header { text-align: center; margin-bottom: 80px; }
+.sub-header h2 { font-size: 36px; color: #3b82f6; letter-spacing: 2px; }
+.sub-header p { color: #94a3b8; margin-top: 10px; }
+
+/* 서비스 카드 디자인 */
+.service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.service-card { background: #1e293b; padding: 40px; border-radius: 12px; border-left: 5px solid #3b82f6; }
+.service-card h4 { font-size: 22px; margin-bottom: 15px; color: #f1f5f9; }
+
+/* 프로필 리스트 */
+.career-list { list-style: none; margin-top: 20px; }
+.career-list li { margin-bottom: 10px; color: #cbd5e1; padding-left: 20px; position: relative; }
+.career-list li::before { content: "•"; color: #3b82f6; position: absolute; left: 0; }
+
+/* 면허증 그리드 섹션 */
+.license-section {
+    padding: 80px 40px;
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+/* 5개 배치를 위해 grid 설정을 변경합니다 */
+.license-grid {
+    display: grid;
+    /* 5개를 균등하게 1/5씩 나눕니다 */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; /* 간격을 조금 좁히면 5개가 더 안정적으로 보입니다 */
+    max-width: 1400px; /* 전체 너비를 조금 넓혀서 5개가 안 답답하게 조절합니다 */
+    margin: 40px auto 0;
+}
+
+.license-item {
+    background: #ffffff;
+    padding: 10px; /* 내부 여백을 줄여 공간 확보 */
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.license-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.license-item img {
+    width: 100%;
+    /* 5개일 때는 세로 길이를 300px 정도로 낮추는 것이 비율상 보기 좋습니다 */
+    height: 300px; 
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+.license-item span {
+    display: block;
+    margin-top: 15px;
+    font-size: 13px; /* 글자 크기를 살짝 줄여 좁은 폭에 맞춤 */
+    font-weight: 600;
+    color: #797676;
+}
+
+/* 모바일 대응: 화면이 좁아지면 자동으로 줄바꿈 */
+@media (max-width: 1024px) {
+    .license-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+    .license-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+img {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; /* 텍스트나 이미지 선택 방지 */
+    -webkit-user-drag: none; /* 드래그 방지 */
+    pointer-events: none; /* 마우스 클릭 이벤트 자체를 무시 (주의: 클릭 시 페이지 이동이 필요하다면 사용 금지) */
+}
+
+
+
+/* 연혁 섹션 스타일 */
+.history-section {
+    padding: 50px 40px;
+    background-color: #ffffff;
+}
+
+.history-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 50px;
+    border-left: 2px solid #e2e8f0; /* 타임라인 세로선 */
+}
+
+.history-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* 타임라인 포인트 점 */
+.history-item::before {
+    content: "";
+    position: absolute;
+    left: -57px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #3b82f6;
+    border: 3px solid #5849e0;
+    border-radius: 50%;
+}
+
+.history-item .year {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.history-content {
+    list-style: none;
+}
+
+.history-content li {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* 2. 상단 타이틀(HISTORY) 스타일 */
+.history-section .sub-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.history-section .sub-header h3 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #3b82f6 !important; /* 강조색인 블루 적용 */
+    letter-spacing: 2px;
+}
+
+/* 1. 인사말 섹션 하단 여백 제거 */
+.hero-description {
+    margin-bottom: 20px !important; /* 인사말 아래 공간 축소 */
+}
+
+/* 2. HISTORY 섹션 상단 여백 대폭 축소 */
+.history-section {
+    padding-top: 10px !important;    /* 100px 이상이던 여백을 20px로 줄임 */
+    padding-bottom: 20px !important;
+}
+
+/* 3. HISTORY 타이틀 주위의 여백 조절 */
+.history-section .sub-header {
+    margin-top: 0 !important;
+    margin-bottom: 30px !important; /* 타이틀과 첫 연도(2024) 사이 간격 */
+}
+
+/* 4. (선택사항) '감사합니다' 문구 아래 선이 있다면 그 간격도 조절 */
+.main-page section {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+
+/* work 메뉴 정리시작 부분
+
+/* 필터 버튼 영역 */
+.filter-container {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px 0;
+    position: sticky; /* 스크롤 시 상단에 고정하고 싶다면 추가 */
+    top: 80px; /* 헤더 높이에 맞춰 조정 */
+    background: #ffffff;
+    z-index: 100;
+}
+
+.filter-btn {
+    padding: 12px 28px;
+    margin: 5px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #64748b;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+/* 선택된 버튼 스타일 */
+.filter-btn.active {
+    background: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* 숨겨질 아이템 애니메이션 */
+.grid-item {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.grid-item.hide {
+    display: none; /* 화면에서 완전히 제거 */
+}
+
+
+/* 오직 WORKS 페이지의 그리드에만 적용되는 설정 */
+.works-page-grid a {
+    max-width: 1600px !important; /* 5개 배치를 위한 넓은 폭 */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important; /* 한 줄에 4~5개 유도 */
+    gap: 20px !important;
+}
+
+/* WORKS 페이지 내의 사진 박스 크기 조절 */
+.works-page-grid .img-box {
+    height: 150px !important; /* 촘촘한 배치를 위해 높이를 조금 낮춤 */
+}
+
+/* WORKS 페이지 내의 텍스트 박스 조절 */
+.works-page-grid .text-box h3 {
+    font-size: 16px !important; /* 사진 크기에 맞춰 제목 크기 축소 */
+}
+
+.works-page-grid .text-box p {
+    font-size: 13px !important;
+}
+
+/* =========================================
+   WORKS 페이지 전용 5열 그리드 마감
+   ========================================= */
+
+/* 1. 전체 틀 조절 (한 줄에 4~5개 유도) */
+.works-page-grid {
+    display: grid !important;
+    /* 사진 최소 너비를 330px로 제한하여 4개 배치를 만듭니다 */
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)) !important;
+    gap: 25px !important;
+    max-width: 1500px !important;
+    margin: 40px auto !important;
+}
+
+/* 2. 사진 박스 크기 고정 (너무 크게 나오는 것 방지) */
+.works-page-grid .img-box {
+    height: 200px !important; /* 높이를 200px로 깎아서 정돈함 */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.works-page-grid .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 사진이 일그러지지 않게 꽉 채움 */
+}
+
+/* 3. 제목 및 설명 텍스트 크기 축소 */
+.works-page-grid .text-box h3 {
+    font-size: 16px !important; /* 사진 크기에 맞춰 글자도 작게 조절 */
+    margin: 8px 0;
+    color: #1e293b;
+}
+
+.works-page-grid .text-box p {
+    font-size: 13px !important;
+    color: #64748b;
+}
+
+/* 1. 링크의 기본 밑줄 제거 (핵심) */
+.works-page-grid a {
+    text-decoration: none !important; /* 밑줄 강제 제거 */
+    display: block; /* 카드 전체 클릭 영역 확보 */
+    color: inherit; /* 부모의 글자색을 그대로 따라감 */
+}
+
+/* 2. 마우스를 올렸을 때도 밑줄이 안 생기도록 방어 */
+.works-page-grid a:hover {
+    text-decoration: none !important;
+}
+
+/* 3. 제목 텍스트 추가 정돈 */
+.works-page-grid .text-box h3 {
+    font-size: 16px !important;
+    margin: 8px 0;
+    color: #1e293b; /* 글자색을 진한 남색으로 고정 */
+    text-decoration: none !important; /* 혹시 모를 제목 자체 밑줄 방어 */
+}
+
+
+/* 상세 페이지 전용 마감 스타일 */
+.project-detail-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    /* 첫 번째 숫자(상단 여백)를 160px -> 100px로 줄입니다 */
+    padding: 100px 20px 100px; 
+}
+
+.detail-header-group {
+    border-left: 4px solid #3b82f6;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+.detail-tag { color: #3b82f6; font-size: 14px; font-weight: 700; }
+.detail-header-group h2 { font-size: 32px; margin-top: 10px; color: #1e293b; }
+
+/* 개요 정보 그리드 */
+.detail-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 2px solid #1e293b;
+    margin-bottom: 60px;
+}
+
+.info-item {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-item .label { width: 100px; font-weight: 700; color: #64748b; }
+.info-item .val { color: #1e293b; flex: 1; }
+
+/* 사진 갤러리 정돈 */
+.project-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.photo-card img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.photo-card p {
+    margin-top: 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 16px;
+}
+
+.back-nav { text-align: center; margin-top: 80px; }
+.btn-list {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #1e293b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.btn-list:hover { background: #3b82f6; }
