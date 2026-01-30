@@ -653,6 +653,35 @@ img {
 
 /* 화면 폭이 768px 이하일 때 (태블릿, 스마트폰) */
 @media (max-width: 768px) {
+
+    /* 1. 헤더 전체 높이와 여백 축소 */
+header {
+    padding: 10px 0 !important; /* 위아래 여백을 대폭 줄임 */
+}
+
+.header-container {
+    flex-direction: column; /* 로고와 메뉴를 위아래 2단으로 배치 */
+    gap: 10px;
+}
+
+/* 2. 로고 텍스트 크기 조절 */
+.logo-text {
+    font-size: 1rem !important; /* 로고 글씨를 작게 */
+}
+
+/* 3. 메뉴 링크들 정리 */
+nav {
+    display: flex;
+    flex-wrap: wrap; /* 메뉴가 많으면 다음 줄로 넘어가게 */
+    justify-content: center;
+    gap: 10px 15px; /* 메뉴 사이 간격 조절 */
+}
+
+nav a {
+    font-size: 0.85rem !important; /* 메뉴 글씨 크기 축소 */
+    padding: 5px 0;
+}
+
     /* 1. 메인 사진 높이 조절 */
     .main-completion .photo-card.large img {
         height: 300px; /* 모바일에서는 높이를 줄여 한눈에 들어오게 함 */
