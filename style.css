@@ -649,3 +649,32 @@ img {
 .process-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; /* 공정 사진은 약간 더 작게 3열 배치 권장 */
 }
+
+
+/* 화면 폭이 768px 이하일 때 (태블릿, 스마트폰) */
+@media (max-width: 768px) {
+    /* 1. 메인 사진 높이 조절 */
+    .main-completion .photo-card.large img {
+        height: 300px; /* 모바일에서는 높이를 줄여 한눈에 들어오게 함 */
+    }
+
+    /* 2. 하단 공정 사진 그리드를 1열로 변경 */
+    .process-grid {
+        grid-template-columns: 1fr !important; /* 옆으로 나열되던 사진을 세로 1줄로 */
+        gap: 20px;
+    }
+
+    /* 3. 텍스트 크기 미세 조정 */
+    .detail-header-group h2 {
+        font-size: 1.5rem; /* 제목이 너무 크면 줄바꿈이 심하므로 축소 */
+    }
+    
+    .section-divider {
+        margin: 40px 0 30px 0; /* 여백을 좁혀서 스크롤 부담 감소 */
+    }
+}
+
+img {
+    max-width: 100%; /* 부모 박스보다 커지지 않게 제한 */
+    height: auto;    /* 비율에 맞춰 높이 자동 조절 */
+}
