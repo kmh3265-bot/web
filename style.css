@@ -707,3 +707,66 @@ img {
     max-width: 100%; /* 부모 박스보다 커지지 않게 제한 */
     height: auto;    /* 비율에 맞춰 높이 자동 조절 */
 }
+
+
+footer {
+    background: #1a1a1a;
+    color: #999;
+    padding: 80px 0 0 0;
+    border-top: 1px solid #333;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex; /* 가로로 나란히 배치 */
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-box {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* 두 회사 사이에 세로 구분선 추가 */
+.biz-section, .arch-section {
+    border-right: 1px solid #333; /* 오른쪽에 얇은 선 */
+    padding-right: 20px;
+}
+
+.footer-title {
+    color: #555; /* 소제목은 차분하게 */
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.biz-name {
+    color: #fff !important; /* 회사 이름은 강조 */
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px !important;
+}
+
+.footer-box p {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    margin: 4px 0;
+}
+
+/* 모바일에서는 세로로 쌓이도록 */
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .biz-section, .arch-section {
+        border-right: none;
+        border-bottom: 1px solid #333;
+        padding-right: 0;
+        padding-bottom: 30px;
+    }
+}
