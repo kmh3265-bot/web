@@ -710,63 +710,75 @@ img {
 
 
 footer {
-    background: #1a1a1a;
-    color: #888; /* 글씨 색을 살짝 더 흐리게 해서 시선을 본문에 집중시킴 */
-    padding: 30px 0 0 0; /* 위아래 여백을 대폭 축소 (기존 80px -> 30px) */
+    background: #151515;
+    color: #777;
+    padding: 20px 0; /* 위아래 여백을 최소화 */
     border-top: 1px solid #222;
-    font-size: 0.8rem; /* 전체적인 글씨 크기 축소 */
+    font-size: 0.75rem; /* 글씨 크기를 작게 조절 */
 }
 
-.footer-container {
-    max-width: 1100px;
+.footer-slim-container {
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    justify-content: space-between; /* 좌우 끝으로 밀착 */
+    align-items: center; /* 세로 중앙 정렬 */
 }
 
-.footer-box {
-    flex: 1;
-    min-width: 200px; /* 최소 너비도 줄임 */
-    margin-bottom: 20px;
+/* 왼쪽 영역 스타일 */
+.footer-left {
+    flex: 1.2; /* 왼쪽 공간을 약간 더 넓게 */
 }
 
-.footer-title {
-    color: #444; /* 소제목 존재감을 낮춤 */
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
+.biz-group {
+    margin-bottom: 6px;
 }
 
 .biz-name {
-    color: #bbb !important; /* 회사 이름도 너무 튀지 않는 밝은 회색으로 */
-    font-size: 0.95rem; /* 크기 축소 */
+    color: #cecece;
     font-weight: 700;
-    margin-bottom: 8px !important;
+    margin-right: 30px;
 }
 
-.footer-box p {
-    line-height: 1.6; /* 행간을 좁혀서 높이 축소 */
-    margin: 2px 0;
+.biz-detail {
+    color: #e0e0e0;
 }
 
-.footer-tel {
-    font-size: 1rem !important; /* 전화번호 크기도 적당히 축소 */
-    color: #ccc;
-}
-
-/* 최하단 저작권 영역도 더 얇게 */
-.footer-bottom {
-    background: #111;
-    padding: 15px 0;
-    text-align: center;
-    border-top: 1px solid #222;
+.address {
     margin-top: 20px;
+    color: #555;
 }
 
-.footer-bottom p {
-    font-size: 0.7rem;
-    color: #444;
+/* 오른쪽 영역 스타일 */
+.footer-right {
+    flex: 0.8;
+    text-align: right; /* 오른쪽 정렬 */
+}
+
+.contact-line {
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.contact-line strong {
+    color: #ccc;
+    font-size: 1.0rem;
+}
+
+.copyright-line {
+    color: #c9c9c9;
+    font-size: 1.0rem;
+}
+
+/* 모바일 대응: 공간이 좁아지면 다시 2단으로 */
+@media (max-width: 768px) {
+    .footer-slim-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .footer-right {
+        text-align: center;
+    }
 }
