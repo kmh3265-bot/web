@@ -711,62 +711,62 @@ img {
 
 footer {
     background: #1a1a1a;
-    color: #999;
-    padding: 80px 0 0 0;
-    border-top: 1px solid #333;
+    color: #888; /* 글씨 색을 살짝 더 흐리게 해서 시선을 본문에 집중시킴 */
+    padding: 30px 0 0 0; /* 위아래 여백을 대폭 축소 (기존 80px -> 30px) */
+    border-top: 1px solid #222;
+    font-size: 0.8rem; /* 전체적인 글씨 크기 축소 */
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
-    display: flex; /* 가로로 나란히 배치 */
+    display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 30px;
 }
 
 .footer-box {
     flex: 1;
-    min-width: 280px;
-}
-
-/* 두 회사 사이에 세로 구분선 추가 */
-.biz-section, .arch-section {
-    border-right: 1px solid #333; /* 오른쪽에 얇은 선 */
-    padding-right: 20px;
+    min-width: 200px; /* 최소 너비도 줄임 */
+    margin-bottom: 20px;
 }
 
 .footer-title {
-    color: #555; /* 소제목은 차분하게 */
-    font-size: 0.8rem;
+    color: #444; /* 소제목 존재감을 낮춤 */
+    font-size: 0.7rem;
     font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }
 
 .biz-name {
-    color: #fff !important; /* 회사 이름은 강조 */
-    font-size: 1.1rem;
+    color: #bbb !important; /* 회사 이름도 너무 튀지 않는 밝은 회색으로 */
+    font-size: 0.95rem; /* 크기 축소 */
     font-weight: 700;
-    margin-bottom: 15px !important;
+    margin-bottom: 8px !important;
 }
 
 .footer-box p {
-    font-size: 0.85rem;
-    line-height: 1.8;
-    margin: 4px 0;
+    line-height: 1.6; /* 행간을 좁혀서 높이 축소 */
+    margin: 2px 0;
 }
 
-/* 모바일에서는 세로로 쌓이도록 */
-@media (max-width: 900px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .biz-section, .arch-section {
-        border-right: none;
-        border-bottom: 1px solid #333;
-        padding-right: 0;
-        padding-bottom: 30px;
-    }
+.footer-tel {
+    font-size: 1rem !important; /* 전화번호 크기도 적당히 축소 */
+    color: #ccc;
+}
+
+/* 최하단 저작권 영역도 더 얇게 */
+.footer-bottom {
+    background: #111;
+    padding: 15px 0;
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.7rem;
+    color: #444;
 }
