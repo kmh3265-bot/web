@@ -888,4 +888,25 @@ footer {
     .works-page-grid .img-box {
         height: 200px !important;
     }
+
+    /* 화면 폭이 768px 이하인 모바일 기기에서만 적용 */
+@media (max-width: 768px) {
+    .filter-container {
+        /* 1. 고정 기능 해제 */
+        position: relative !important; 
+        top: 0 !important; 
+        
+        /* 2. 모바일용 여백 및 레이아웃 조정 */
+        padding: 10px 0 !important;
+        margin-bottom: 20px !important;
+        
+        /* 3. 배경색 및 그림자 제거 (선택사항) */
+        box-shadow: none !important; 
+    }
+    
+    /* 메뉴가 사라진 자리에 사진이 바로 붙도록 그리드 간격 조정 */
+    .works-page-grid {
+        margin-top: 10px !important;
+    }
+}
 }
