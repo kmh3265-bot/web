@@ -844,3 +844,48 @@ footer {
     }
 }
 }
+
+/* =========================================
+   모바일 전용: 메인 텍스트 및 WORKS 페이지 보정
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. 메인 히어로 섹션 글씨 축소 */
+    .hero-title {
+        font-size: 24px !important; /* 기존 크기에서 대폭 축소 */
+        line-height: 1.3 !important;
+        margin-bottom: 15px !important;
+    }
+    .hero-tag {
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+    }
+    .hero-description {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* 2. 시공실적(WORKS) 페이지 버튼 정렬 */
+    .filter-container {
+        top: 60px !important; /* 헤더 높이에 맞춤 */
+        padding: 10px 5px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 5px !important;
+    }
+    .filter-btn {
+        padding: 6px 15px !important; /* 버튼 크기를 슬림하게 */
+        font-size: 12px !important;
+        margin: 2px !important;
+    }
+
+    /* 3. 시공실적 그리드 겹침 해결 */
+    .works-page-grid {
+        grid-template-columns: 1fr !important; /* 모바일은 1열 배치가 가장 안전함 */
+        margin-top: 20px !important;
+        padding: 0 15px !important;
+    }
+    .works-page-grid .img-box {
+        height: 200px !important;
+    }
+}
