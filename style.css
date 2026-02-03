@@ -814,4 +814,33 @@ footer {
     .biz-name { font-size: 0.75rem !important; display: block; margin-bottom: 2px; }
     .biz-detail { font-size: 0.65rem !important; color: #999 !important; display: block; }
     .contact-line strong, .copyright-line { font-size: 0.75rem !important; }
+    
+    @media (max-width: 768px) {
+    /* 1. 메인 태그 (상단 블루 텍스트) */
+    .hero-tag {
+        font-size: 10px !important;
+        margin-bottom: 15px !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* 2. 메인 타이틀 (가장 크게 나오는 글씨) */
+    .hero-title {
+        font-size: 24px !important; /* 기존 48px에서 절반으로 축소 */
+        line-height: 1.3 !important;
+        margin-bottom: 20px !important;
+        letter-spacing: -0.5px !important;
+    }
+
+    /* 3. 설명 문구 (작은 글씨) */
+    .hero-description {
+        font-size: 14px !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 4. 하단 버튼 크기 조절 */
+    .btn {
+        padding: 12px 25px !important;
+        font-size: 13px !important;
+    }
+}
 }
